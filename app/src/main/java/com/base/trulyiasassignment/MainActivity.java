@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(idVideo);
         idVideo.setMediaController(mediaController);
-        idVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.panda));
+        idVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" +R.raw.studyiq));
 
         btnHandout = findViewById(R.id.btnHandout);
 
