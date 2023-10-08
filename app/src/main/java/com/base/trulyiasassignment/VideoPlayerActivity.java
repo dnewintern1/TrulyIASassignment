@@ -1,9 +1,12 @@
 package com.base.trulyiasassignment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,8 +31,12 @@ public class VideoPlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
 
             idVideo = findViewById(R.id.idVideo);

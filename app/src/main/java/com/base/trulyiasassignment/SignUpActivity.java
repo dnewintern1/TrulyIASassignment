@@ -1,7 +1,10 @@
 package com.base.trulyiasassignment;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +35,13 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         auth = FirebaseAuth.getInstance();
         signupButton = findViewById(R.id.signup_button);

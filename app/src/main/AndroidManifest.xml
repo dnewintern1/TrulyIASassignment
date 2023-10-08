@@ -15,31 +15,35 @@
         android:theme="@style/Base.Theme.TrulyIASAssignment"
         tools:targetApi="31">
         <activity
+            android:name=".ChapterDetailsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".menuoptions.menuOptionSeven"
             android:exported="false" />
         <activity
             android:name=".VideoPlayerActivity"
-            android:exported="false" >
-
-        </activity>
-        <activity
-            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".Loginactivity"
-            android:exported="false">
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".PDFView"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
 
         </activity>
     </application>

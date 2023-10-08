@@ -1,39 +1,22 @@
 package com.base.trulyiasassignment;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.Toast;
-import android.widget.Toolbar;
-import android.widget.VideoView;
 
+import com.base.trulyiasassignment.adapter.Experiment_Adapter;
+import com.base.trulyiasassignment.adapter.itemAdapter;
+import com.base.trulyiasassignment.listener.ChapterClickedListener;
 import com.base.trulyiasassignment.menuoptions.menuOptionSeven;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     String[] categorie ={"Chapter 1: Food: Where Does It Come From?" , "Chapter 2: Components Of Food",
             "Chapter 3:  Fibre to Fabric ", "Chapter 4: Sorting Material into Groups",
-            "Chapter 6: Separation of Substance"};
+           "Chapter 6: Separation of Substance"};
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +47,49 @@ public class MainActivity extends AppCompatActivity {
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
+
+
         recyclerview = findViewById(R.id.recyclerview);
-        recyclerview.setAdapter(new itemAdapter(categorie));
+        recyclerview.setAdapter(new itemAdapter(MainActivity.this,categorie,onChapterClicked));
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
-
-
     }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, menuOptionSeven.class));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private final ChapterClickedListener onChapterClicked = new ChapterClickedListener() {
+        @Override
+        public void onChapterClicked(String id) {
+
+            // Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this,ChapterDetailsActivity.class)
+                    .putExtra("id",id));
+
+
+        }
+    };
 
 
 }
