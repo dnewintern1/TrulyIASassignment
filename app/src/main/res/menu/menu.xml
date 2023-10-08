@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.base.trulyiasassignment.MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:showAsAction="ifRoom"
+        android:title="class 6">
+    </item>
+
+    <item
+        app:showAsAction="collapseActionView"
+        android:id="@+id/action_settings"
+        android:title="class 7">
+    </item>
+
+    <item
+        app:showAsAction="collapseActionView"
+        android:title="class 8">
+    </item>
+
+    <item
+        app:showAsAction="collapseActionView"
+        android:title="class 9">
+    </item>
+
+</menu>
