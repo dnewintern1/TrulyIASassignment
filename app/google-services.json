@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "737751231611",
+    "project_id": "trulyiasassignment",
+    "storage_bucket": "trulyiasassignment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737751231611:android:70cc31a67699fc6a6906de",
+        "android_client_info": {
+          "package_name": "com.base.trulyiasassignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzV5-h5t_nHLIOYC1rH3-sPUcwjMTRFyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

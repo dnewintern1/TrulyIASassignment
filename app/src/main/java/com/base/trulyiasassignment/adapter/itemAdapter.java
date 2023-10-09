@@ -4,16 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.base.trulyiasassignment.Chapters;
 import com.base.trulyiasassignment.listener.ChapterClickedListener;
 import com.base.trulyiasassignment.R;
 
-public class itemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
+public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ItemViewHolder> {
 
 
    String[] categorie ={"Chapter 1: Food: Where Does It Come From?" , "Chapter 2: Components Of Food",
@@ -56,7 +57,6 @@ public class itemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
             public void onClick(View view) {
                 int clickedPosition = holder.getAdapterPosition();
                 onClickListener.onChapterClicked(String.valueOf(clickedPosition));
-
                 Toast.makeText(view.getContext(), "Clicked item at position: " + clickedPosition, Toast.LENGTH_SHORT).show();
             }
         });
@@ -70,7 +70,24 @@ public class itemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     }
 
 
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
+
+        CardView randomlistContainer;
+        TextView itemid;
+
+        public ItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            itemid = itemView.findViewById(R.id.itemid);
+            randomlistContainer = itemView.findViewById(R.id.randomlistContainer);
+        }
+
+        public TextView getItemid() {
+            return itemid;
+        }
+
+    }
 }
 
 

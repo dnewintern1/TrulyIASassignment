@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.base.trulyiasassignment.adapter.Experiment_Adapter;
 import com.base.trulyiasassignment.adapter.itemAdapter;
 import com.base.trulyiasassignment.listener.ChapterClickedListener;
 import com.base.trulyiasassignment.menuoptions.menuOptionSeven;

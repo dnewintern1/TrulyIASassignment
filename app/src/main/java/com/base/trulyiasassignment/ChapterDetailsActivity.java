@@ -5,30 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
-import com.base.trulyiasassignment.adapter.Experiment_Adapter;
-import com.base.trulyiasassignment.adapter.itemAdapter;
-import com.base.trulyiasassignment.listener.ChapterClickedListener;
-import com.base.trulyiasassignment.listener.OnExperimentClickedListener;
+import com.base.trulyiasassignment.adapter.VideoAdapter;
 
-public class ChapterDetailsActivity extends AppCompatActivity {
+import java.util.List;
+import java.util.Vector;
+
+public class ChapterDetailsActivity extends AppCompatActivity implements VideoAdapter.OnNoteListener {
 
     private RecyclerView recycler_experiment;
 
-    Experiment_Adapter mExperimentAdapter;
+    Vector<YoutubeVideo>youtubeVideos =new Vector<>();
 
-    ChapterClickedListener experimentClickedListener;
-
-    String[] experiment ={"EXPERIMENT-1","EXPERIMENT-2","EXPERIMENT - 3","EXPERIMENT - 4",
-            "EXPERIMENT - 5","EXPERIMENT - 6","EXPERIMENT - 7","EXPERIMENT - 8"};
+    List<YoutubeVideo> youtubeVideoList;
 
 
     @Override
@@ -42,26 +35,36 @@ public class ChapterDetailsActivity extends AppCompatActivity {
                 = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
         actionBar.setBackgroundDrawable(colorDrawable);
 
-
         recycler_experiment = findViewById(R.id.recycler_experiment);
+        recycler_experiment.setHasFixedSize(true);
+        recycler_experiment.setLayoutManager(new LinearLayoutManager(this));
+        youtubeVideos.add(new YoutubeVideo());
 
 
-        recycler_experiment = findViewById(R.id.recycler_experiment);
-        recycler_experiment.setAdapter(new itemAdapter(getApplicationContext(),experiment,onChapterClicked));
+
+
+
+
+        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/gHbLqYMpW94\" frameborder=\"0\" allowfullscreen></iframe>"));
+       youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=Cv03ZFFDP9M\" frameborder=\"0\" allowfullscreen></iframe>"));
+        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=LcgHUtUk_pk\" frameborder=\"0\" allowfullscreen></iframe>"));
+
+
+        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos,getApplicationContext(),this);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recycler_experiment.setLayoutManager(layoutManager);
+        recycler_experiment.setAdapter(videoAdapter);
 
     }
 
-    private final ChapterClickedListener onChapterClicked = new ChapterClickedListener() {
-        @Override
-        public void onChapterClicked(String id) {
 
-            // Toast.makeText(MainActivity.this, id, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(), VideoPlayerActivity.class)
-                    .putExtra("id",id));
+    @Override
+    public void onNoteClick(int position) {
 
+        Intent i = new Intent(ChapterDetailsActivity.this,VideoPlayerActivity.class)
+                .putExtra("id",position);
+        startActivity(i);
 
-        }
-    };
+    }
 }
