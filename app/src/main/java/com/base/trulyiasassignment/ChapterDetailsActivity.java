@@ -21,7 +21,7 @@ public class ChapterDetailsActivity extends AppCompatActivity implements VideoAd
 
     Vector<YoutubeVideo>youtubeVideos =new Vector<>();
 
-    List<YoutubeVideo> youtubeVideoList;
+
 
 
     @Override
@@ -46,8 +46,8 @@ public class ChapterDetailsActivity extends AppCompatActivity implements VideoAd
 
 
         youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/gHbLqYMpW94\" frameborder=\"0\" allowfullscreen></iframe>"));
-       youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=Cv03ZFFDP9M\" frameborder=\"0\" allowfullscreen></iframe>"));
-        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=LcgHUtUk_pk\" frameborder=\"0\" allowfullscreen></iframe>"));
+       youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=yR_TU_YKsDI\" frameborder=\"0\" allowfullscreen></iframe>"));
+        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=yR_TU_YKsDI\" frameborder=\"0\" allowfullscreen></iframe>"));
 
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos,getApplicationContext(),this);

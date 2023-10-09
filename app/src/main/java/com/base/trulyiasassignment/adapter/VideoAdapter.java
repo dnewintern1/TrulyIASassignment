@@ -1,6 +1,7 @@
 package com.base.trulyiasassignment.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.base.trulyiasassignment.R;
+import com.base.trulyiasassignment.VideoPlayerActivity;
 import com.base.trulyiasassignment.YoutubeVideo;
 
 
@@ -43,6 +45,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoVideoVi
 
         holder.videoWebView.loadData(youtubeVideoList.get(position).getVideoURL(),"text/html","utf-8");
 
+        holder.videolayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the VideoPlayerActivity and pass the position as an extra
+                Intent intent = new Intent(v.getContext(), VideoPlayerActivity.class);
+                intent.putExtra("video_position", position);
+                v.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -65,14 +77,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoVideoVi
             videoWebView= (WebView)itemview.findViewById(R.id.videoWebView);
             this.onNoteListener = onNoteListener;
             this.context = context;
-
             videolayout=(View) itemview.findViewById(R.id.videolayout);
-
 
            videoWebView.getSettings().setJavaScriptEnabled(true);
             videoWebView.setWebChromeClient(new WebChromeClient());
-
             videolayout.setOnClickListener(this);
+
 
 
 
@@ -87,7 +97,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoVideoVi
         }
     }
 
-    interface OnNoteListener{
+   public interface OnNoteListener{
         void onNoteClick(int position);
 
     }

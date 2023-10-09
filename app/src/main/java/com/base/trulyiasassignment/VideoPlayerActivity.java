@@ -20,9 +20,12 @@ import android.widget.ImageButton;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
-public class VideoPlayerActivity extends AppCompatActivity {
+import com.base.trulyiasassignment.adapter.VideoAdapter;
+
+public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapter.OnNoteListener {
 
     private VideoView idVideo;
     private Button btnHandout;
@@ -40,11 +43,42 @@ public class VideoPlayerActivity extends AppCompatActivity {
         mediaController.setAnchorView(idVideo);
 
             idVideo.setMediaController(mediaController);
-            idVideo.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" +R.raw.demovid));
+
+
+        int position = getIntent().getIntExtra("video_position", 0);
+        int videoResource;
+
+        switch (position) {
+            case 0:
+                videoResource = R.raw.demovid;
+                break;
+            case 1:
+                videoResource = R.raw.vidone;
+                break;
+            case 2:
+                videoResource = R.raw.vidtwo;
+                break;
+            default:
+                // Handle the case where an invalid position is returned by helper()
+                videoResource = 0; // Set a default value or handle the error
+                break;
+        }
+
+        if (videoResource != -1) {
+            // Play the video if a valid resource ID is found
+            idVideo.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + videoResource));
+            idVideo.start();
+        } else {
+            // Handle the case where an invalid position is returned by helper()
+            // Display an error message or take appropriate action
+            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+        }
 
 
 
-            btnHandout = findViewById(R.id.btnHandout);
+
+
+                btnHandout = findViewById(R.id.btnHandout);
 
 
             btnHandout.setOnClickListener(new View.OnClickListener() {
@@ -60,4 +94,12 @@ public class VideoPlayerActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+    @Override
+    public void onNoteClick(int position) {
+
+    }
 }
