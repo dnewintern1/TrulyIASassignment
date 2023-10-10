@@ -19,8 +19,7 @@ public class PDFView extends AppCompatActivity {
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
         actionBar.setBackgroundDrawable(colorDrawable);
 
         String url = getIntent().getStringExtra("pdf_url");

@@ -11,21 +11,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.SurfaceHolder;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.MediaController;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.base.trulyiasassignment.adapter.VideoAdapter;
 
-public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapter.OnNoteListener {
+public class VideoPlayerActivity extends AppCompatActivity implements NestedAdapter.OnNoteListener {
 
     private VideoView idVideo;
     private Button btnHandout;
@@ -35,6 +28,11 @@ public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(getString(R.string.actionbarColor)));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
 
             idVideo = findViewById(R.id.idVideo);
         MediaController  mediaController = new MediaController(this);
@@ -45,7 +43,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapt
             idVideo.setMediaController(mediaController);
 
 
-        int position = getIntent().getIntExtra("video_position", -1);
+        int position = getIntent().getIntExtra("video_position", 0);
         int videoResource;
 
         switch (position) {
@@ -65,18 +63,13 @@ public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapt
         }
 
         if (videoResource != -1) {
-            // Play the video if a valid resource ID is found
+
             idVideo.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + videoResource));
             idVideo.start();
         } else {
-            // Handle the case where an invalid position is returned by helper()
-            // Display an error message or take appropriate action
+
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
         }
-
-
-
-
 
                 btnHandout = findViewById(R.id.btnHandout);
 
