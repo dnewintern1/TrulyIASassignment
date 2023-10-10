@@ -48,9 +48,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoVideoVi
         holder.videolayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int onclickpostion = holder.getAdapterPosition();
                 // Start the VideoPlayerActivity and pass the position as an extra
                 Intent intent = new Intent(v.getContext(), VideoPlayerActivity.class);
-                intent.putExtra("video_position", position);
+                intent.putExtra("video_position", onclickpostion);
                 v.getContext().startActivity(intent);
             }
         });
@@ -82,12 +84,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoVideoVi
            videoWebView.getSettings().setJavaScriptEnabled(true);
             videoWebView.setWebChromeClient(new WebChromeClient());
             videolayout.setOnClickListener(this);
-
-
-
-
         }
-
 
         @Override
         public void onClick(View v) {

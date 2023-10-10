@@ -38,17 +38,10 @@ public class ChapterDetailsActivity extends AppCompatActivity implements VideoAd
         recycler_experiment = findViewById(R.id.recycler_experiment);
         recycler_experiment.setHasFixedSize(true);
         recycler_experiment.setLayoutManager(new LinearLayoutManager(this));
-        youtubeVideos.add(new YoutubeVideo());
-
-
-
-
-
 
         youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/gHbLqYMpW94\" frameborder=\"0\" allowfullscreen></iframe>"));
-       youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=yR_TU_YKsDI\" frameborder=\"0\" allowfullscreen></iframe>"));
-        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/watch?v=yR_TU_YKsDI\" frameborder=\"0\" allowfullscreen></iframe>"));
-
+       youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/i7w29DUI6y4\" frameborder=\"0\" allowfullscreen></iframe>"));
+        youtubeVideos.add(new YoutubeVideo("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/Z1jFXrOLHRA\" frameborder=\"0\" allowfullscreen></iframe>"));
 
         VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos,getApplicationContext(),this);
 

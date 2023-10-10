@@ -45,7 +45,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements VideoAdapt
             idVideo.setMediaController(mediaController);
 
 
-        int position = getIntent().getIntExtra("video_position", 0);
+        int position = getIntent().getIntExtra("video_position", -1);
         int videoResource;
 
         switch (position) {
